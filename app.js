@@ -3,6 +3,7 @@
 const express = require("express");
 const mongoose = require("mongoose")
 const _ = require("lodash")
+require('dotenv').config()
 
 const app = express();
 
@@ -12,7 +13,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 async function main() {
-  await mongoose.connect("mongodb+srv://root:root@cluster0.oau3jje.mongodb.net/todolistDB")
+  await mongoose.connect(process.env.DB_URI)
   console.log("DB connected")
 }
 
